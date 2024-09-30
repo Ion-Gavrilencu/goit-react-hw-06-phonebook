@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, deleteContact, setFilter } from '../redux/contactsSlice';
+import { addContact, deleteContact, updateFilter } from '../../src/redux/contactsSlice';
 import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
@@ -34,7 +34,7 @@ const App = () => {
   };
 
   const handleFilterChange = event => {
-    dispatch(setFilter(event.target.value));
+    dispatch(updateFilter(event.target.value));
   };
 
   const getFilteredContacts = () => {

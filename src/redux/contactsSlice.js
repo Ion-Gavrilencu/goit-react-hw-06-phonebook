@@ -7,18 +7,19 @@ const contactsSlice = createSlice({
     filter: '',
   },
   reducers: {
-    addContact: (state, action) => {
+    addContact(state, action) {
       state.contacts.push(action.payload);
     },
-    deleteContact: (state, action) => {
+    deleteContact(state, action) {
       state.contacts = state.contacts.filter(contact => contact.id !== action.payload);
     },
-    setFilter: (state, action) => {
+    updateFilter(state, action) {
       state.filter = action.payload;
-    },
+    }
   },
 });
 
-export const { addContact, deleteContact, setFilter } = contactsSlice.actions;
+// Export acțiunile și reducerul
+export const { addContact, deleteContact, updateFilter } = contactsSlice.actions;
 export default contactsSlice.reducer;
 
