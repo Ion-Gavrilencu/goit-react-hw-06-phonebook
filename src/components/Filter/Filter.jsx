@@ -1,24 +1,23 @@
-import { useDispatch } from 'react-redux';
-import { updateFilter } from '../../redux/contactsSlice';
-import PropTypes from 'prop-types';
+import css from './Filter.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { qwery } from 'redux/sliceFilter';
 
-const Filter = () => {
+export const Filter = () => {
+  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
-
-  const handleChange = (e) => {
-    dispatch(updateFilter(e.target.value));
-  };
-
   return (
-    <input type="text" onChange={handleChange} placeholder="Search contacts..." />
+    <>
+      <label htmlFor="">
+        <span>Find contacts by name</span>
+      </label>
+      <input
+        className={css.input}
+        value={filter}
+        onChange={evt => dispatch(qwery(evt.currentTarget.value))}
+        type="text"
+        name="filter"
+        placeholder="Find contacts by name"
+      />
+    </>
   );
 };
-
-Filter.propTypes = {
-  updateFilter: PropTypes.func,
-};
-
-export default Filter;
-
-
-
